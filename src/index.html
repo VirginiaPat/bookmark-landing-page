@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="./styles.css" rel="stylesheet" />
+    <script type="module" src="./js/index.js"></script>
+
+    <title>Bookmark landing page</title>
+  </head>
+  <body class="bg-white has-[dialog[open]]:overflow-hidden">
+    <header
+      class="flex justify-between items-center pt-10 gutter-x xl:pt-12 xl:w-276 xl:mx-auto"
+    >
+      <!-- Logo -->
+      <a href="#home" aria-label="Go to home page"
+        ><img src="./images/logo-bookmark.svg" alt=""
+      /></a>
+
+      <!-- Open hamburger menu button -->
+      <button
+        id="open-menu-button"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-haspopup="dialog"
+        aria-controls="ham-menu-dialog"
+        class="icon-button text-blue-950 xl:hidden"
+      >
+        <svg
+          aria-hidden="true"
+          width="18"
+          height="15"
+          viewBox="0 0 18 15"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M0 0H18V3H0V0ZM0 6H18V9H0V6ZM18 12H0V15H18V12Z"
+          />
+        </svg>
+      </button>
+      <!-- Navigation menu / DESKTOP -->
+      <nav aria-label="Menu" class="hidden xl:block">
+        <ul class="flex gap-12 uppercase text-preset-6-normal">
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#pricing" class="nav-link">Pricing</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li>
+            <a
+              href="#login"
+              class="px-8.75 py-3 text-white rounded-md bg-red-400 transition-colors duration-300 hover:bg-white hover:text-red-400 hover:outline-2 hover:outline-red-400 focus-visible:bg-white focus-visible:text-red-400 focus-visible:outline-2 focus-visible:outline-red-400"
+              >Login</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Hamburger menu dialog-->
+    <dialog id="ham-menu-dialog" aria-label="Menu" class="menu-dialog">
+      <!-- Container with logo/button/nav  -->
+      <div>
+        <!-- Logo & close menu button -->
+        <header class="flex justify-between items-center">
+          <a href="#home" aria-label="Go to home page"
+            ><img src="./images/logo-bookmark-white.svg" alt=""
+          /></a>
+
+          <!-- Close hamburger menu button -->
+          <button
+            id="close-menu-button"
+            type="button"
+            aria-label="Close navigation menu"
+            autofocus
+            class="group icon-button hover:rotate-90 motion-reduce:transition-none motion-reduce:hover:rotate-0"
+          >
+            <img
+              class="transition-[filter] duration-300 group-hover:filter-(--filter-gray-500)"
+              src="./images/icon-close.svg"
+              alt=""
+            />
+          </button>
+        </header>
+        <!-- Hamburger navigation menu -->
+        <nav aria-label="Menu">
+          <ul
+            class="mt-10 border-t border-white/15 divide-y divide-white/15 uppercase text-white text-center"
+          >
+            <li class="ham-item">
+              <a href="#features" class="ham-link">Features</a>
+            </li>
+            <li class="ham-item">
+              <a href="#pricing" class="ham-link">Pricing</a>
+            </li>
+            <li class="ham-item">
+              <a href="#contact" class="ham-link">Contact</a>
+            </li>
+            <li>
+              <a
+                href="#login"
+                class="block py-6 outline-2 outline-white rounded-md text-preset-3-medium transition-colors duration-300 hover:bg-white hover:text-blue-950 focus-visible:bg-white focus-visible:text-blue-950"
+                >Login</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Socials -->
+      <div class="flex self-center gap-10">
+        <a aria-label="Go to our facebook page" class="group" href="#facebook"
+          ><img class="social-icon" src="./images/icon-facebook.svg" alt=""
+        /></a>
+        <a aria-label="Go to our twitter page" class="group" href="#twitter"
+          ><img class="social-icon" src="./images/icon-twitter.svg" alt=""
+        /></a>
+      </div>
+    </dialog>
+    <main></main>
+    <footer></footer>
+  </body>
+</html>

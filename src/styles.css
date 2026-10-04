@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@theme {
+  /* custom colors */
+  --color-blue-950: #242a45;
+  --color-blue-600: #5267df;
+  --color-gray-600: #5b6074;
+  --color-gray-50: #f7f7f7;
+  --color-red-400: #d03434;
+
+  --font-rubik: "Rubik", sans-serif;
+
+  /* custom font sizes */
+  --text-32px: 2rem;
+  --text-10px: 0.625rem;
+
+  /* Custom filters */
+  --filter-gray-500: brightness(0) saturate(100%) invert(47%) sepia(15%)
+    saturate(397%) hue-rotate(182deg) brightness(90%) contrast(90%);
+}
+
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    @apply font-rubik;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline-current outline-2;
+  }
+
+  a,
+  button {
+    touch-action: manipulation;
+  }
+}
+
+@utility gutter-x {
+  @apply px-8 md:px-20;
+}
+
+/* Typography */
+@utility text-preset-1 {
+  @apply font-rubik font-medium text-5xl leading-[110%] tracking-normal;
+}
+
+@utility text-preset-2 {
+  @apply font-rubik font-medium text-32px leading-[125%] tracking-[-0.1px];
+}
+
+@utility text-preset-3-medium {
+  @apply font-rubik font-medium text-xl leading-[120%] tracking-[0.25px];
+}
+
+@utility text-preset-3-normal {
+  @apply font-rubik font-normal text-xl leading-[120%] tracking-[2.31px];
+}
+
+@utility text-preset-4 {
+  @apply font-rubik font-normal text-lg leading-[155%] tracking-normal;
+}
+
+@utility text-preset-5-light {
+  @apply font-rubik font-light text-base leading-[225%] tracking-[0.5px];
+}
+
+@utility text-preset-5-normal {
+  @apply font-rubik font-normal text-base leading-[110%] tracking-[0.5px];
+}
+
+@utility text-preset-6-medium {
+  @apply font-rubik font-medium text-sm leading-[200%] tracking-[0.25px];
+}
+
+@utility text-preset-6-normal {
+  @apply font-rubik font-normal text-sm leading-[200%] tracking-[0.25px];
+}
+
+@utility text-preset-6-semibold {
+  @apply font-rubik font-semibold text-sm leading-[300%] tracking-[5px];
+}
+
+@utility text-preset-7 {
+  @apply font-rubik font-medium italic text-10px leading-[120%] tracking-[0.25px];
+}
+
+@layer components {
+  .nav-link {
+    @apply text-blue-950 transition-colors duration-300 hover:text-red-400 focus-visible:text-red-400;
+  }
+
+  .icon-button {
+    @apply grid size-12 shrink-0 cursor-pointer place-items-center rounded-full transition-[background-color,rotate] duration-300 ease-out hover:bg-gray-200;
+  }
+
+  .menu-dialog {
+    /* Full-screen modal. `fixed inset-0 m-0` keeps the box in place even when the browser drops the dialog from the top layer before the exit transition ends (no `overlay` support in Firefox). Flex direction, justify and gap live here so they persist during the closing transition. */
+    @apply h-dvh w-full max-h-none max-w-none gutter-x pt-10 pb-12  text-white bg-blue-950/95 focus-visible:outline-none backdrop:bg-transparent flex-col justify-between gap-14 fixed inset-0 m-0 overflow-x-clip;
+
+    --menu-delay: 0s;
+    opacity: 0;
+    translate: 0 -1.5rem;
+    /* `display` and `overlay` use allow-discrete so the dialog stays rendered (and in the top layer) while it fades out. `pointer-events` flips after --menu-delay: instantly on close, after the animation on open. */
+    pointer-events: none;
+    transition:
+      opacity 0.4s,
+      translate 0.4s ease,
+      display 0.4s allow-discrete,
+      overlay 0.4s allow-discrete,
+      pointer-events 0s var(--menu-delay) allow-discrete;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+
+    &[open] {
+      --menu-delay: 0.4s;
+      display: flex; /* `display` is only set here: setting it on the base rule would override the UA `display: none` and keep the closed menu focusable. */
+      opacity: 1;
+      translate: 0 0;
+      pointer-events: auto;
+
+      @starting-style {
+        opacity: 0;
+        translate: 0 -1.5rem;
+      }
+    }
+  }
+
+  .ham-item {
+    --menu-index: 1; /* Stagger index set via :nth-child instead of sibling-index(), which isn't supported in every browser yet. Add a rule when adding an item. */
+    transition:
+      opacity 0.4s ease,
+      translate 0.4s ease;
+    transition-delay: calc(var(--menu-index) * 50ms);
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+
+    @starting-style {
+      opacity: 0;
+      translate: calc(var(--menu-index) * 24px) 0;
+    }
+
+    &:nth-child(2) {
+      --menu-index: 2;
+    }
+    &:nth-child(3) {
+      --menu-index: 3;
+    }
+  }
+
+  .ham-link {
+    @apply block py-6 text-preset-3-normal transition-[padding,color] duration-300 hover:pl-4 hover:text-gray-300 focus-visible:pl-6;
+  }
+
+  .social-icon {
+    @apply transition-[filter] duration-300 hover:filter-(--filter-gray-500) group-focus-visible:filter-(--filter-gray-500);
+  }
+}
