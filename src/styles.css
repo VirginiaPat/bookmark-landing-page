@@ -1,6 +1,18 @@
 @import "tailwindcss";
 
+@custom-variant hocus {
+  &:focus-visible {
+    @slot;
+  }
+  @media (hover: hover) {
+    &:hover {
+      @slot;
+    }
+  }
+}
+
 @theme {
+  /* TODO - CHANGE THE DEFAULT NAMES OF COLORS  (--color-ink, --color-brand, --color-danger &  --filter-gray-500) */
   /* custom colors */
   --color-blue-950: #242a45;
   --color-blue-600: #5267df;
@@ -17,6 +29,9 @@
   /* Custom filters */
   --filter-gray-500: brightness(0) saturate(100%) invert(47%) sepia(15%)
     saturate(397%) hue-rotate(182deg) brightness(90%) contrast(90%);
+
+  /*  drop shadow */
+  --shadow-buttons: 0px 8px 8px rgba(73, 93, 207, 0.05);
 }
 
 @layer base {
@@ -40,57 +55,62 @@
 }
 
 @utility gutter-x {
-  @apply px-8 md:px-20;
+  @apply px-8 md:px-20 xl:px-0;
 }
 
-/* Typography */
+@utility page-w {
+  @apply w-276 mx-auto;
+}
+
+/* #region Typography */
 @utility text-preset-1 {
-  @apply font-rubik font-medium text-5xl leading-[110%] tracking-normal;
+  @apply font-medium text-5xl leading-[110%] tracking-normal;
 }
 
 @utility text-preset-2 {
-  @apply font-rubik font-medium text-32px leading-[125%] tracking-[-0.1px];
+  @apply font-medium text-32px leading-[125%] tracking-[-0.1px];
 }
 
 @utility text-preset-3-medium {
-  @apply font-rubik font-medium text-xl leading-[120%] tracking-[0.25px];
+  @apply font-medium text-xl leading-[120%] tracking-[0.25px];
 }
 
 @utility text-preset-3-normal {
-  @apply font-rubik font-normal text-xl leading-[120%] tracking-[2.31px];
+  @apply font-normal text-xl leading-[120%] tracking-[2.31px];
 }
 
 @utility text-preset-4 {
-  @apply font-rubik font-normal text-lg leading-[155%] tracking-normal;
+  @apply font-normal text-lg leading-[155%] tracking-normal;
 }
 
 @utility text-preset-5-light {
-  @apply font-rubik font-light text-base leading-[225%] tracking-[0.5px];
+  @apply font-light text-base leading-[225%] tracking-[0.5px];
 }
 
 @utility text-preset-5-normal {
-  @apply font-rubik font-normal text-base leading-[110%] tracking-[0.5px];
+  @apply font-normal text-base leading-[110%] tracking-[0.5px];
 }
 
 @utility text-preset-6-medium {
-  @apply font-rubik font-medium text-sm leading-[200%] tracking-[0.25px];
+  @apply font-medium text-sm leading-[200%] tracking-[0.25px];
 }
 
 @utility text-preset-6-normal {
-  @apply font-rubik font-normal text-sm leading-[200%] tracking-[0.25px];
+  @apply font-normal text-sm leading-[200%] tracking-[0.25px];
 }
 
 @utility text-preset-6-semibold {
-  @apply font-rubik font-semibold text-sm leading-[300%] tracking-[5px];
+  @apply font-semibold text-sm leading-[300%] tracking-[5px];
 }
 
 @utility text-preset-7 {
-  @apply font-rubik font-medium italic text-10px leading-[120%] tracking-[0.25px];
+  @apply font-medium italic text-10px leading-[120%] tracking-[0.25px];
 }
+/* #endregion */
 
 @layer components {
   .nav-link {
-    @apply text-blue-950 transition-colors duration-300 hover:text-red-400 focus-visible:text-red-400;
+    @apply text-blue-950 transition-colors duration-300 hocus:text-red-400;
   }
 
   .icon-button {
@@ -99,7 +119,7 @@
 
   .menu-dialog {
     /* Full-screen modal. `fixed inset-0 m-0` keeps the box in place even when the browser drops the dialog from the top layer before the exit transition ends (no `overlay` support in Firefox). Flex direction, justify and gap live here so they persist during the closing transition. */
-    @apply h-dvh w-full max-h-none max-w-none gutter-x pt-10 pb-12  text-white bg-blue-950/95 focus-visible:outline-none backdrop:bg-transparent flex-col justify-between gap-14 fixed inset-0 m-0 overflow-x-clip;
+    @apply h-dvh w-full max-h-none max-w-none gutter-x pt-10 pb-12 text-white bg-blue-950/95 focus-visible:outline-none backdrop:bg-transparent flex-col justify-between gap-14 fixed inset-0 m-0 overflow-x-clip;
 
     --menu-delay: 0s;
     opacity: 0;
@@ -156,10 +176,22 @@
   }
 
   .ham-link {
-    @apply block py-6 text-preset-3-normal transition-[padding,color] duration-300 hover:pl-4 hover:text-gray-300 focus-visible:pl-6;
+    @apply block py-6 font-normal text-xl leading-[120%] tracking-[2.31px] transition-[translate,color] duration-300 hocus:translate-x-4 hocus:text-gray-300;
   }
 
   .social-icon {
     @apply transition-[filter] duration-300 hover:filter-(--filter-gray-500) group-focus-visible:filter-(--filter-gray-500);
+  }
+
+  .btn {
+    @apply inline-flex items-center rounded-md h-12 px-2.75 transition-colors duration-300 shadow-buttons font-medium text-base tracking-normal md:text-sm md:tracking-[0.25px] md:px-6;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white hocus:bg-white hocus:text-blue-600 hocus:outline-2 hocus:outline-blue-600;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-50 text-blue-950/75 hocus:bg-white hocus:text-gray-600 hocus:outline-2 hocus:outline-gray-600;
   }
 }

@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Bookmark is a clean and simple bookmark manager. Organize your favourite websites and see them load instantly in every new browser tab."
+    />
     <link
       rel="icon"
       type="image/png"
@@ -22,13 +26,18 @@
 
     <title>Bookmark landing page</title>
   </head>
-  <body class="bg-white has-[dialog[open]]:overflow-hidden">
+  <body class="bg-white has-[dialog:modal]:overflow-hidden">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-blue-950"
+      >Skip to main content</a
+    >
     <header
-      class="flex justify-between items-center pt-10 gutter-x xl:pt-12 xl:w-276 xl:mx-auto"
+      class="flex justify-between items-center pt-10 gutter-x xl:pt-12 xl:page-w"
     >
       <!-- Logo -->
-      <a href="#home" aria-label="Go to home page"
-        ><img src="./images/logo-bookmark.svg" alt=""
+      <a href="./" aria-label="Go to home page"
+        ><img src="./images/logo-bookmark.svg" alt="" width="148" height="25"
       /></a>
 
       <!-- Open hamburger menu button -->
@@ -56,14 +65,16 @@
       </button>
       <!-- Navigation menu / DESKTOP -->
       <nav aria-label="Menu" class="hidden xl:block">
-        <ul class="flex gap-12 uppercase text-preset-6-normal">
+        <ul
+          class="flex gap-12 uppercase font-normal text-sm leading-[200%] tracking-[0.25px]"
+        >
           <li><a href="#features" class="nav-link">Features</a></li>
           <li><a href="#pricing" class="nav-link">Pricing</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
           <li>
             <a
               href="#login"
-              class="px-8.75 py-3 text-white rounded-md bg-red-400 transition-colors duration-300 hover:bg-white hover:text-red-400 hover:outline-2 hover:outline-red-400 focus-visible:bg-white focus-visible:text-red-400 focus-visible:outline-2 focus-visible:outline-red-400"
+              class="px-8.75 py-3 text-white rounded-md bg-red-400 transition-colors duration-300 hocus:bg-white hocus:text-red-400 hocus:outline-2 hocus:outline-red-400"
               >Login</a
             >
           </li>
@@ -71,13 +82,21 @@
       </nav>
     </header>
     <!-- Hamburger menu dialog-->
-    <dialog id="ham-menu-dialog" aria-label="Menu" class="menu-dialog">
+    <dialog
+      id="ham-menu-dialog"
+      aria-label="Navigation menu"
+      class="menu-dialog"
+    >
       <!-- Container with logo/button/nav  -->
       <div>
         <!-- Logo & close menu button -->
-        <header class="flex justify-between items-center">
-          <a href="#home" aria-label="Go to home page"
-            ><img src="./images/logo-bookmark-white.svg" alt=""
+        <div class="flex justify-between items-center">
+          <a href="./" aria-label="Go to home page"
+            ><img
+              src="./images/logo-bookmark-white.svg"
+              alt=""
+              width="148"
+              height="25"
           /></a>
 
           <!-- Close hamburger menu button -->
@@ -92,9 +111,11 @@
               class="transition-[filter] duration-300 group-hover:filter-(--filter-gray-500)"
               src="./images/icon-close.svg"
               alt=""
+              width="16"
+              height="15"
             />
           </button>
-        </header>
+        </div>
         <!-- Hamburger navigation menu -->
         <nav aria-label="Menu">
           <ul
@@ -112,7 +133,7 @@
             <li>
               <a
                 href="#login"
-                class="block py-6 outline-2 outline-white rounded-md text-preset-3-medium transition-colors duration-300 hover:bg-white hover:text-blue-950 focus-visible:bg-white focus-visible:text-blue-950"
+                class="block py-6 outline-2 outline-white rounded-md font-medium text-xl leading-[120%] tracking-[0.25px] transition-colors duration-300 hocus:bg-white hocus:text-blue-950"
                 >Login</a
               >
             </li>
@@ -123,14 +144,69 @@
       <!-- Socials -->
       <div class="flex self-center gap-10">
         <a aria-label="Go to our facebook page" class="group" href="#facebook"
-          ><img class="social-icon" src="./images/icon-facebook.svg" alt=""
+          ><img
+            class="social-icon"
+            src="./images/icon-facebook.svg"
+            alt=""
+            width="24"
+            height="24"
         /></a>
         <a aria-label="Go to our twitter page" class="group" href="#twitter"
-          ><img class="social-icon" src="./images/icon-twitter.svg" alt=""
+          ><img
+            class="social-icon"
+            src="./images/icon-twitter.svg"
+            alt=""
+            width="24"
+            height="20"
         /></a>
       </div>
     </dialog>
-    <main></main>
+    <main id="main">
+      <!-- Hero section -->
+      <section aria-labelledby="hero-title" class="gutter-x overflow-x-clip">
+        <!-- hero image & texts container -->
+        <div
+          class="flex flex-col justify-center items-center gap-12 pt-12.5 md:pt-21 xl:pt-20.25 xl:gap-0 xl:flex-row-reverse xl:page-w"
+        >
+          <!-- hero image container -->
+          <div class="relative isolate">
+            <img
+              src="./images/illustration-hero.svg"
+              alt=""
+              width="657"
+              height="466"
+              fetchpriority="high"
+            />
+            <div
+              class="-z-10 absolute bottom-0 left-15 -right-[100vw] h-3/4 bg-blue-600 rounded-full md:left-39 md:h-88"
+            ></div>
+          </div>
+
+          <!-- Container with: TITLE/ TEXT / 2 BUTTONS -->
+          <div class="flex flex-col text-center gap-6 xl:text-start xl:w-135">
+            <h1
+              id="hero-title"
+              class="font-medium text-3xl leading-[135%] tracking-normal text-blue-950 md:text-5xl md:leading-[110%]"
+            >
+              A Simple Bookmark Manager
+            </h1>
+            <p
+              class="font-normal text-sm leading-[165%] tracking-normal text-blue-950/70 md:text-lg md:leading-[155%]"
+            >
+              A clean and simple interface to organize your favourite websites.
+              Open a new browser tab and see your sites load instantly. Try it
+              for free.
+            </p>
+            <div
+              class="flex flex-wrap items-center justify-center gap-2 md:gap-4 xl:justify-start"
+            >
+              <a class="btn btn-primary" href="#">Get it on Chrome</a>
+              <a class="btn btn-secondary" href="#">Get it on Firefox</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
     <footer></footer>
   </body>
 </html>
