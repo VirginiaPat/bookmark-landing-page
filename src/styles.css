@@ -194,4 +194,59 @@
   .btn-secondary {
     @apply bg-gray-50 text-blue-950/75 hocus:bg-white hocus:text-gray-600 hocus:outline-2 hocus:outline-gray-600;
   }
+
+  .tablist-btn {
+    @apply cursor-pointer border-b-4 border-transparent py-4 font-normal text-sm leading-[165%] tracking-normal transition-colors duration-300 text-blue-950/75 md:w-full md:pt-0 md:pb-6 md:text-base md:leading-[110%] md:tracking-[0.5px] hover:text-red-400 aria-selected:text-blue-950;
+  }
+
+  .tabpanels {
+    /* Tallest image (tab 2) defines the fixed "stage" height */
+    --stage-h: clamp(14.25rem, calc(3.04rem + 47.84vw), 26rem);
+    --blue-h: clamp(12.6875rem, calc(3.8rem + 37.91vw), 22rem);
+    /* How far the blue shape's curved edge reaches right of the center */
+    --blue-reach: clamp(7.06rem, calc(2.29rem + 20.4vw), 12.06rem);
+    --blue-overhang: 2rem; /* how far the blue goes below the images */
+    --blue-right: calc(50% - var(--blue-reach));
+
+    @apply relative isolate;
+
+    @media (min-width: 48rem) {
+      --blue-overhang: 3.5rem;
+    }
+    @media (min-width: 80rem) {
+      --blue-right: calc(100% - 28.75rem);
+    }
+  }
+
+  .tabpanels-blue {
+    @apply pointer-events-none absolute -left-[100vw] -z-10 rounded-full bg-blue-600;
+    right: var(--blue-right);
+    height: var(--blue-h);
+    top: calc(var(--stage-h) + var(--blue-overhang) - var(--blue-h));
+  }
+
+  .tabpanel-visual {
+    @apply flex items-end justify-center xl:flex-1;
+    height: var(--stage-h);
+  }
+
+  .tabpanel-container {
+    @apply flex flex-col justify-center items-center gap-8 md:gap-16 xl:flex-row xl:gap-30;
+  }
+
+  .tabpanel-texts-container {
+    @apply flex flex-col gap-4 justify-center items-center mt-8.5 md:mt-24.5 md:gap-6 xl:items-start xl:w-112.5 xl:mt-0;
+  }
+
+  .tabpanel-heading {
+    @apply px-10 text-center font-medium text-3xl leading-[135%] tracking-normal text-blue-950 md:text-32px md:leading-[125%] md:tracking-[-0.1px] xl:px-0 xl:text-start;
+  }
+
+  .tabpanel-text {
+    @apply text-center font-normal text-sm leading-[165%] tracking-normal text-blue-950/70 md:text-lg md:leading-[155%] xl:text-start;
+  }
+
+  .tabpanel-leaving {
+    @apply absolute inset-x-0 top-0 pointer-events-none;
+  }
 }

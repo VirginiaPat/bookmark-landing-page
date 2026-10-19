@@ -1,83 +1,34 @@
-// @ts-check
-
 /**
- * @file Hamburger menu dialog: open/close behaviour.
+ * Entry point: starts every feature of the page. Each feature validates its
+ * own required DOM elements, and is started independently: an error in one of
+ * them is logged with the feature's name and does not stop the others.
+ * @module index
  */
 
-/**
- * Finds an element and checks its type, so the result is typed and non-null.
- * Throws a clear error when the element is missing or has the wrong type.
- *
- * @template {Element} T
- * @param {string} selector CSS selector of the element.
- * @param {new () => T} type Expected constructor, e.g. `HTMLDialogElement`.
- * @returns {T}
- */
-function getElement(selector, type) {
-  const element = document.querySelector(selector);
+import { initMenu } from "./menu.js";
+import { initTabs } from "./tabs.js";
 
-  if (!(element instanceof type)) {
-    throw new Error(`Expected ${type.name} for "${selector}"`);
+/**
+ * Starts one feature and logs its error, if any, without rethrowing.
+ * @param {string} name - Feature name, used in the error message.
+ * @param {() => void} init - The feature's init function.
+ * @returns {void}
+ */
+const startFeature = (name, init) => {
+  try {
+    init();
+  } catch (error) {
+    console.error(`[${name}] failed to start:`, error);
   }
-
-  return element;
-}
-
-/** DOM elements used by the hamburger menu dialog. */
-const dom = {
-  menu: getElement("#ham-menu-dialog", HTMLDialogElement),
-  buttonOpen: getElement("#open-menu-button", HTMLButtonElement),
-  buttonClose: getElement("#close-menu-button", HTMLButtonElement),
 };
 
 /**
- * Matches when the viewport reaches Tailwind's `xl` breakpoint (80rem),
- * where the desktop navigation replaces the hamburger button.
- * Keep in sync with the `xl` value in the Tailwind theme.
- * @type {MediaQueryList}
- */
-const desktopQuery = window.matchMedia("(min-width: 80rem)");
-
-/**
- * Opens the menu in the top layer.
+ * Initializes all interactive features of the page.
  * @returns {void}
  */
-function openMenu() {
-  dom.menu.showModal();
-}
+const init = () => {
+  startFeature("menu", initMenu);
+  startFeature("tabs", initTabs);
+};
 
-/**
- * Closes the menu (button, link and desktop breakpoint all end here).
- * @returns {void}
- */
-function closeMenu() {
-  dom.menu.close();
-}
-
-/**
- * Closes the menu after a click on any link inside it.
- * One listener on the dialog covers all links (event delegation).
- * @param {MouseEvent} event
- * @returns {void}
- */
-function handleMenuClick(event) {
-  if (event.target instanceof Element && event.target.closest("a[href]")) {
-    closeMenu();
-  }
-}
-
-/**
- * Closes an open menu when the viewport grows to the desktop breakpoint.
- * @param {MediaQueryListEvent} event
- * @returns {void}
- */
-function handleDesktopChange(event) {
-  if (event.matches && dom.menu.open) {
-    closeMenu();
-  }
-}
-
-dom.buttonOpen.addEventListener("click", openMenu);
-dom.buttonClose.addEventListener("click", closeMenu);
-dom.menu.addEventListener("click", handleMenuClick);
-desktopQuery.addEventListener("change", handleDesktopChange);
+init();

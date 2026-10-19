@@ -161,9 +161,9 @@
         /></a>
       </div>
     </dialog>
-    <main id="main">
+    <main id="main" class="overflow-x-clip">
       <!-- Hero section -->
-      <section aria-labelledby="hero-title" class="gutter-x overflow-x-clip">
+      <section aria-labelledby="hero-title" class="gutter-x">
         <!-- hero image & texts container -->
         <div
           class="flex flex-col justify-center items-center gap-12 pt-12.5 md:pt-21 xl:pt-20.25 xl:gap-0 xl:flex-row-reverse xl:page-w"
@@ -177,6 +177,7 @@
               height="466"
               fetchpriority="high"
             />
+            <!-- Background blue curved shape -->
             <div
               class="-z-10 absolute bottom-0 left-15 -right-[100vw] h-3/4 bg-blue-600 rounded-full md:left-39 md:h-88"
             ></div>
@@ -202,6 +203,170 @@
             >
               <a class="btn btn-primary" href="#">Get it on Chrome</a>
               <a class="btn btn-secondary" href="#">Get it on Firefox</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features section / Features and all the rest container -->
+      <section
+        id="features"
+        aria-labelledby="features-heading"
+        class="gutter-x mt-32 md:mt-31.5 xl:mt-20 xl:page-w"
+      >
+        <!-- Features container -->
+        <div class="flex flex-col gap-4 text-center xl:w-135 xl:mx-auto">
+          <h2
+            id="features-heading"
+            class="font-medium text-3xl leading-[135%] tracking-normal text-blue-950 md:text-32px md:leading-[125%] md:tracking-[-0.1px]"
+          >
+            Features
+          </h2>
+          <p
+            class="font-normal text-sm leading-[165%] tracking-normal text-blue-950/70 md:text-lg md:leading-[155%]"
+          >
+            Our aim is to make it quick and easy for you to access your
+            favourite websites. Your bookmarks sync between your devices so you
+            can access them on the go.
+          </p>
+        </div>
+        <!-- Tablist and tab panels container  -->
+        <div class="mt-8 md:mt-18">
+          <!-- Tablist -->
+          <div class="relative mb-11 xl:mb-18">
+            <div
+              role="tablist"
+              aria-label="Features sections"
+              class="text-center grid grid-cols-1 border-y border-blue-600/20 divide-y divide-blue-600/20 md:grid-cols-3 md:border-t-0 md:divide-y-0"
+            >
+              <button
+                type="button"
+                role="tab"
+                id="simple-bookmarking-tab"
+                aria-selected="true"
+                aria-controls="simple-bookmarking-content"
+                class="tablist-btn"
+              >
+                Simple Bookmarking
+              </button>
+
+              <button
+                type="button"
+                role="tab"
+                id="speedy-searching-tab"
+                aria-selected="false"
+                aria-controls="speedy-searching-content"
+                class="tablist-btn"
+              >
+                Speedy Searching
+              </button>
+
+              <button
+                type="button"
+                role="tab"
+                id="easy-sharing-tab"
+                aria-selected="false"
+                aria-controls="easy-sharing-content"
+                class="tablist-btn"
+              >
+                Easy Sharing
+              </button>
+            </div>
+            <!-- Sliding red underline -->
+            <span
+              id="tab-indicator"
+              aria-hidden="true"
+              class="absolute top-0 left-0 h-1 w-0 bg-red-400"
+            ></span>
+          </div>
+
+          <!-- Tabpanels + shared blue background -->
+          <div id="tabpanels" class="tabpanels">
+            <!-- Background blue curved shape -->
+            <div class="tabpanels-blue" aria-hidden="true"></div>
+
+            <!-- 1st panel -->
+            <div
+              id="simple-bookmarking-content"
+              role="tabpanel"
+              aria-labelledby="simple-bookmarking-tab"
+              class="tabpanel-container"
+            >
+              <div class="tabpanel-visual">
+                <img
+                  class="h-[clamp(12.5625rem,calc(3.915rem+36.9vw),21.625rem)] w-auto"
+                  src="./images/illustration-features-tab-1.svg"
+                  alt=""
+                  width="536"
+                  height="346"
+                  loading="lazy"
+                />
+              </div>
+              <div class="tabpanel-texts-container">
+                <h3 class="tabpanel-heading">Bookmark in one click</h3>
+                <p class="tabpanel-text">
+                  Organize your bookmarks however you like. Our simple
+                  drag-and-drop interface gives you complete control over how
+                  you manage your favourite sites.
+                </p>
+                <a href="#more-info" class="btn btn-primary">More Info</a>
+              </div>
+            </div>
+
+            <!-- 2nd panel -->
+            <div
+              id="speedy-searching-content"
+              role="tabpanel"
+              aria-labelledby="speedy-searching-tab"
+              class="tabpanel-container hidden"
+            >
+              <div class="tabpanel-visual">
+                <img
+                  class="h-(--stage-h) w-auto"
+                  src="./images/illustration-features-tab-2.svg"
+                  alt=""
+                  width="478"
+                  height="416"
+                  loading="lazy"
+                />
+              </div>
+              <div class="tabpanel-texts-container">
+                <h3 class="tabpanel-heading">Intelligent search</h3>
+                <p class="tabpanel-text">
+                  Our powerful search feature will help you find saved sites in
+                  no time at all. No need to trawl through all of your
+                  bookmarks.
+                </p>
+                <a href="#more-info" class="btn btn-primary">More Info</a>
+              </div>
+            </div>
+
+            <!-- 3rd panel -->
+            <div
+              id="easy-sharing-content"
+              role="tabpanel"
+              aria-labelledby="easy-sharing-tab"
+              class="tabpanel-container hidden"
+            >
+              <div class="tabpanel-visual">
+                <img
+                  class="h-[clamp(13.75rem,calc(4.208rem+40.71vw),23.75rem)] w-auto"
+                  src="./images/illustration-features-tab-3.svg"
+                  alt=""
+                  width="440"
+                  height="380"
+                  loading="lazy"
+                />
+              </div>
+              <div class="tabpanel-texts-container">
+                <h3 class="tabpanel-heading">Share your bookmarks</h3>
+                <p class="tabpanel-text">
+                  Easily share your bookmarks and collections with others.
+                  Create a shareable link that you can send at the click of a
+                  button.
+                </p>
+                <a href="#more-info" class="btn btn-primary">More Info</a>
+              </div>
             </div>
           </div>
         </div>
