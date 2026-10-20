@@ -32,6 +32,7 @@
 
   /*  drop shadow */
   --shadow-buttons: 0px 8px 8px rgba(73, 93, 207, 0.05);
+  --shadow-cards: 0px 10px 20px rgba(73, 93, 207, 0.05);
 }
 
 @layer base {
@@ -248,5 +249,21 @@
 
   .tabpanel-leaving {
     @apply absolute inset-x-0 top-0 pointer-events-none;
+  }
+
+  .card-container {
+    @apply py-8 flex flex-col gap-6 items-center text-center rounded-2xl shadow-cards md:py-6 md:gap-4 xl:py-8 xl:gap-6;
+  }
+
+  .card-heading {
+    @apply font-medium text-2xl leading-[200%] tracking-normal text-blue-950 md:text-xl md:leading-[120%] md:tracking-[0.25px];
+  }
+
+  .card-text {
+    @apply font-normal text-sm leading-[165%] tracking-normal text-blue-950/70 md:leading-[200%] md:tracking-[0.25px];
+  }
+
+  .card-button {
+    @apply px-8 py-2 inline-flex items-center rounded-md bg-blue-600 shadow-buttons text-white font-medium text-sm leading-[200%] tracking-normal hocus:bg-white hocus:text-blue-600 hocus:outline-2 hocus:outline-blue-600 md:px-2 md:py-1 md:rounded-sm md:text-xs md:tracking-[0.25px] xl:px-8 xl:py-2 xl:rounded-md xl:text-sm;
   }
 }
