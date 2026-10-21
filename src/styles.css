@@ -29,6 +29,8 @@
   /* Custom filters */
   --filter-gray-500: brightness(0) saturate(100%) invert(47%) sepia(15%)
     saturate(397%) hue-rotate(182deg) brightness(90%) contrast(90%);
+  --filter-red-400: brightness(0) saturate(100%) invert(27%) sepia(68%)
+    saturate(2407%) hue-rotate(344deg) brightness(89%) contrast(82%);
 
   /*  drop shadow */
   --shadow-buttons: 0px 8px 8px rgba(73, 93, 207, 0.05);
@@ -264,6 +266,45 @@
   }
 
   .card-button {
-    @apply px-8 py-2 inline-flex items-center rounded-md bg-blue-600 shadow-buttons text-white font-medium text-sm leading-[200%] tracking-normal hocus:bg-white hocus:text-blue-600 hocus:outline-2 hocus:outline-blue-600 md:px-2 md:py-1 md:rounded-sm md:text-xs md:tracking-[0.25px] xl:px-8 xl:py-2 xl:rounded-md xl:text-sm;
+    @apply px-8 py-2 inline-flex items-center rounded-md bg-blue-600 shadow-buttons text-white font-medium text-sm leading-[200%] tracking-normal transition-colors duration-300 hocus:bg-white hocus:text-blue-600 hocus:outline-2 hocus:outline-blue-600 md:px-2 md:py-1 md:rounded-sm md:text-xs md:tracking-[0.25px] xl:px-8 xl:py-2 xl:rounded-md xl:text-sm;
+  }
+
+  .fqa-container {
+    @apply py-4 first:pt-0 md:border-t md:border-blue-950/15 md:first:pt-4;
+  }
+
+  .fqa-btn {
+    @apply cursor-pointer flex items-center justify-between w-full;
+  }
+
+  .fqa-heading {
+    @apply font-normal text-base leading-[165%] tracking-normal md:text-lg md:leading-[155%] group-hocus:text-red-400;
+  }
+
+  .fqa-arrow {
+    @apply text-blue-600 transition-[transform,color] duration-300 group-aria-expanded:rotate-180 group-aria-expanded:text-red-400 md:mr-4;
+  }
+
+  .fqa-content {
+    @apply grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+      grid-template-rows 0.3s ease,
+      visibility 0.3s;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  /* The button's aria-expanded is the single source of truth */
+  .fqa-container:has([aria-expanded="true"]) .fqa-content {
+    grid-template-rows: 1fr;
+    visibility: visible;
+  }
+
+  .fqa-content-text {
+    @apply pt-4 font-light text-base leading-[225%] tracking-[0.5px] text-blue-950/75;
   }
 }
