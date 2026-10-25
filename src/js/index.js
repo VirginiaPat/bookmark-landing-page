@@ -8,6 +8,7 @@
 import { initMenu } from "./menu.js";
 import { initTabs } from "./tabs.js";
 import { initFaq } from "./faq.js";
+import { initCta } from "./cta.js";
 
 /**
  * Starts one feature and logs its error, if any, without rethrowing.
@@ -31,6 +32,7 @@ const init = () => {
   startFeature("menu", initMenu);
   startFeature("tabs", initTabs);
   startFeature("faq", initFaq);
+  startFeature("cta", initCta);
 };
 
 init();

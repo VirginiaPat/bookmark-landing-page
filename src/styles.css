@@ -187,7 +187,7 @@
   }
 
   .btn {
-    @apply inline-flex items-center rounded-md h-12 px-2.75 transition-colors duration-300 shadow-buttons font-medium text-base tracking-normal md:text-sm md:tracking-[0.25px] md:px-6;
+    @apply cursor-pointer inline-flex items-center rounded-md h-12 px-2.75 transition-colors duration-300 shadow-buttons font-medium text-base leading-[200%] tracking-normal md:text-sm md:tracking-[0.25px] md:px-6;
   }
 
   .btn-primary {
@@ -196,6 +196,10 @@
 
   .btn-secondary {
     @apply bg-gray-50 text-blue-950/75 hocus:bg-white hocus:text-gray-600 hocus:outline-2 hocus:outline-gray-600;
+  }
+
+  .btn-contact {
+    @apply bg-red-400 justify-center text-white hocus:bg-white hocus:text-red-400 hocus:outline-2 hocus:outline-red-400;
   }
 
   .tablist-btn {
@@ -269,23 +273,23 @@
     @apply px-8 py-2 inline-flex items-center rounded-md bg-blue-600 shadow-buttons text-white font-medium text-sm leading-[200%] tracking-normal transition-colors duration-300 hocus:bg-white hocus:text-blue-600 hocus:outline-2 hocus:outline-blue-600 md:px-2 md:py-1 md:rounded-sm md:text-xs md:tracking-[0.25px] xl:px-8 xl:py-2 xl:rounded-md xl:text-sm;
   }
 
-  .fqa-container {
+  .faq-container {
     @apply py-4 first:pt-0 md:border-t md:border-blue-950/15 md:first:pt-4;
   }
 
-  .fqa-btn {
+  .faq-btn {
     @apply cursor-pointer flex items-center justify-between w-full;
   }
 
-  .fqa-heading {
+  .faq-heading {
     @apply font-normal text-base leading-[165%] tracking-normal md:text-lg md:leading-[155%] group-hocus:text-red-400;
   }
 
-  .fqa-arrow {
+  .faq-arrow {
     @apply text-blue-600 transition-[transform,color] duration-300 group-aria-expanded:rotate-180 group-aria-expanded:text-red-400 md:mr-4;
   }
 
-  .fqa-content {
+  .faq-content {
     @apply grid;
     grid-template-rows: 0fr;
     visibility: hidden;
@@ -299,12 +303,12 @@
   }
 
   /* The button's aria-expanded is the single source of truth */
-  .fqa-container:has([aria-expanded="true"]) .fqa-content {
+  .faq-container:has([aria-expanded="true"]) .faq-content {
     grid-template-rows: 1fr;
     visibility: visible;
   }
 
-  .fqa-content-text {
+  .faq-content-text {
     @apply pt-4 font-light text-base leading-[225%] tracking-[0.5px] text-blue-950/75;
   }
 }
