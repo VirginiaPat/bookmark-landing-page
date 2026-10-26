@@ -19,6 +19,7 @@
   --color-gray-600: #5b6074;
   --color-gray-50: #f7f7f7;
   --color-red-400: #d03434;
+  --color-red-300: #ff6b6b;
 
   --font-rubik: "Rubik", sans-serif;
 
@@ -65,55 +66,13 @@
   @apply w-276 mx-auto;
 }
 
-/* #region Typography */
-@utility text-preset-1 {
-  @apply font-medium text-5xl leading-[110%] tracking-normal;
-}
-
-@utility text-preset-2 {
-  @apply font-medium text-32px leading-[125%] tracking-[-0.1px];
-}
-
-@utility text-preset-3-medium {
-  @apply font-medium text-xl leading-[120%] tracking-[0.25px];
-}
-
-@utility text-preset-3-normal {
-  @apply font-normal text-xl leading-[120%] tracking-[2.31px];
-}
-
-@utility text-preset-4 {
-  @apply font-normal text-lg leading-[155%] tracking-normal;
-}
-
-@utility text-preset-5-light {
-  @apply font-light text-base leading-[225%] tracking-[0.5px];
-}
-
-@utility text-preset-5-normal {
-  @apply font-normal text-base leading-[110%] tracking-[0.5px];
-}
-
-@utility text-preset-6-medium {
-  @apply font-medium text-sm leading-[200%] tracking-[0.25px];
-}
-
-@utility text-preset-6-normal {
-  @apply font-normal text-sm leading-[200%] tracking-[0.25px];
-}
-
-@utility text-preset-6-semibold {
-  @apply font-semibold text-sm leading-[300%] tracking-[5px];
-}
-
-@utility text-preset-7 {
-  @apply font-medium italic text-10px leading-[120%] tracking-[0.25px];
-}
-/* #endregion */
-
 @layer components {
   .nav-link {
-    @apply text-blue-950 transition-colors duration-300 hocus:text-red-400;
+    @apply transition-colors duration-300 hocus:text-red-400;
+  }
+
+  .footer-link {
+    @apply transition-colors duration-300 hocus:text-red-300;
   }
 
   .icon-button {
@@ -180,10 +139,18 @@
 
   .ham-link {
     @apply block py-6 font-normal text-xl leading-[120%] tracking-[2.31px] transition-[translate,color] duration-300 hocus:translate-x-4 hocus:text-gray-300;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
   }
 
   .social-icon {
     @apply transition-[filter] duration-300 hover:filter-(--filter-gray-500) group-focus-visible:filter-(--filter-gray-500);
+  }
+
+  .social-icon-footer {
+    @apply transition-[filter] duration-300 hover:filter-(--filter-red-400) group-focus-visible:filter-(--filter-red-400);
   }
 
   .btn {
@@ -281,12 +248,16 @@
     @apply cursor-pointer flex items-center justify-between w-full;
   }
 
-  .faq-heading {
+  .faq-question {
     @apply font-normal text-base leading-[165%] tracking-normal md:text-lg md:leading-[155%] group-hocus:text-red-400;
   }
 
   .faq-arrow {
     @apply text-blue-600 transition-[transform,color] duration-300 group-aria-expanded:rotate-180 group-aria-expanded:text-red-400 md:mr-4;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
   }
 
   .faq-content {

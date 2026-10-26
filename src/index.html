@@ -66,7 +66,7 @@
       <!-- Navigation menu / DESKTOP -->
       <nav aria-label="Menu" class="hidden xl:block">
         <ul
-          class="flex gap-12 uppercase font-normal text-sm leading-[200%] tracking-[0.25px]"
+          class="flex gap-12 uppercase font-normal text-sm leading-[200%] tracking-[0.25px] text-blue-950"
         >
           <li><a href="#features" class="nav-link">Features</a></li>
           <li><a href="#pricing" class="nav-link">Pricing</a></li>
@@ -520,7 +520,7 @@
                 aria-controls="faq-panel-1"
                 class="faq-btn group"
               >
-                <span class="faq-heading"> What is Bookmark? </span>
+                <span class="faq-question">What is Bookmark?</span>
                 <svg
                   aria-hidden="true"
                   focusable="false"
@@ -564,13 +564,12 @@
                 aria-controls="faq-panel-2"
                 class="faq-btn group"
               >
-                <span class="faq-heading"
+                <span class="faq-question"
                   >How can I request a new browser?</span
                 >
                 <svg
                   aria-hidden="true"
                   focusable="false"
-                  xmlns="http://www.w3.org/2000/svg"
                   width="18"
                   height="12"
                   class="faq-arrow"
@@ -614,11 +613,10 @@
                 aria-controls="faq-panel-3"
                 class="faq-btn group"
               >
-                <span class="faq-heading">Is there a mobile app?</span>
+                <span class="faq-question">Is there a mobile app?</span>
                 <svg
                   aria-hidden="true"
                   focusable="false"
-                  xmlns="http://www.w3.org/2000/svg"
                   width="18"
                   height="12"
                   class="faq-arrow"
@@ -660,9 +658,9 @@
                 aria-controls="faq-panel-4"
                 class="faq-btn group"
               >
-                <span class="faq-heading"
-                  >What about other Chromium browsers?
-                </span>
+                <span class="faq-question"
+                  >What about other Chromium browsers?</span
+                >
                 <svg
                   aria-hidden="true"
                   focusable="false"
@@ -703,7 +701,7 @@
 
       <!-- CTA Section -->
       <section
-        id="Contact"
+        id="contact"
         aria-labelledby="cta-heading"
         class="mt-32 py-12.25 px-8 bg-blue-600 md:mt-39.5 md:px-0 md:py-16.75 xl:mt-45.5"
       >
@@ -766,6 +764,54 @@
         </div>
       </section>
     </main>
-    <footer></footer>
+    <footer class="py-8 bg-blue-950 flex justify-center">
+      <div
+        class="flex flex-col items-center gap-12 md:flex-row md:gap-18.5 xl:gap-0 xl:page-w xl:justify-between"
+      >
+        <!-- Logo and nav list container -->
+        <div
+          class="flex flex-col items-center gap-12 md:flex-row md:gap-18.5 xl:gap-16"
+        >
+          <!-- Logo -->
+          <a href="./" aria-label="Go to home page"
+            ><img
+              src="./images/logo-text-white.svg"
+              alt=""
+              width="148"
+              height="25"
+          /></a>
+          <!-- Menu -->
+          <nav aria-label="Footer">
+            <ul
+              class="flex flex-col items-center justify-center gap-6 uppercase text-base leading-[165%] tracking-normal text-white md:flex-row md:text-sm md:leading-[200%] md:tracking-[0.25px] xl:gap-12"
+            >
+              <li><a href="#features" class="footer-link">Features</a></li>
+              <li><a href="#pricing" class="footer-link">Pricing</a></li>
+              <li><a href="#contact" class="footer-link">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Socials -->
+        <div class="flex items-center gap-10 md:gap-6 xl:gap-10">
+          <a aria-label="Go to our facebook page" class="group" href="#facebook"
+            ><img
+              class="social-icon-footer"
+              src="./images/icon-facebook.svg"
+              alt=""
+              width="24"
+              height="24"
+          /></a>
+          <a aria-label="Go to our twitter page" class="group" href="#twitter"
+            ><img
+              class="social-icon-footer"
+              src="./images/icon-twitter.svg"
+              alt=""
+              width="24"
+              height="20"
+          /></a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
