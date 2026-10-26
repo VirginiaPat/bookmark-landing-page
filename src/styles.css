@@ -12,14 +12,13 @@
 }
 
 @theme {
-  /* TODO - CHANGE THE DEFAULT NAMES OF COLORS  (--color-ink, --color-brand, --color-danger &  --filter-gray-500) */
   /* custom colors */
-  --color-blue-950: #242a45;
-  --color-blue-600: #5267df;
-  --color-gray-600: #5b6074;
-  --color-gray-50: #f7f7f7;
-  --color-red-400: #d03434;
-  --color-red-300: #ff6b6b;
+  --color-ink: #242a45;
+  --color-brand: #5267df;
+  --color-muted: #5b6074;
+  --color-surface: #f7f7f7;
+  --color-accent: #d03434;
+  --color-accent-light: #ff6b6b;
 
   --font-rubik: "Rubik", sans-serif;
 
@@ -28,9 +27,9 @@
   --text-10px: 0.625rem;
 
   /* Custom filters */
-  --filter-gray-500: brightness(0) saturate(100%) invert(47%) sepia(15%)
+  --filter-muted: brightness(0) saturate(100%) invert(47%) sepia(15%)
     saturate(397%) hue-rotate(182deg) brightness(90%) contrast(90%);
-  --filter-red-400: brightness(0) saturate(100%) invert(27%) sepia(68%)
+  --filter-accent: brightness(0) saturate(100%) invert(27%) sepia(68%)
     saturate(2407%) hue-rotate(344deg) brightness(89%) contrast(82%);
 
   /*  drop shadow */
@@ -68,11 +67,11 @@
 
 @layer components {
   .nav-link {
-    @apply transition-colors duration-300 hocus:text-red-400;
+    @apply transition-colors duration-300 hocus:text-accent;
   }
 
   .footer-link {
-    @apply transition-colors duration-300 hocus:text-red-300;
+    @apply transition-colors duration-300 hocus:text-accent-light;
   }
 
   .icon-button {
@@ -81,7 +80,7 @@
 
   .menu-dialog {
     /* Full-screen modal. `fixed inset-0 m-0` keeps the box in place even when the browser drops the dialog from the top layer before the exit transition ends (no `overlay` support in Firefox). Flex direction, justify and gap live here so they persist during the closing transition. */
-    @apply h-dvh w-full max-h-none max-w-none gutter-x pt-10 pb-12 text-white bg-blue-950/95 focus-visible:outline-none backdrop:bg-transparent flex-col justify-between gap-14 fixed inset-0 m-0 overflow-x-clip;
+    @apply h-dvh w-full max-h-none max-w-none gutter-x pt-10 pb-12 text-white bg-ink/95 focus-visible:outline-none backdrop:bg-transparent flex-col justify-between gap-14 fixed inset-0 m-0 overflow-x-clip;
 
     --menu-delay: 0s;
     opacity: 0;
@@ -146,11 +145,11 @@
   }
 
   .social-icon {
-    @apply transition-[filter] duration-300 hover:filter-(--filter-gray-500) group-focus-visible:filter-(--filter-gray-500);
+    @apply transition-[filter] duration-300 hover:filter-(--filter-muted) group-focus-visible:filter-(--filter-muted);
   }
 
   .social-icon-footer {
-    @apply transition-[filter] duration-300 hover:filter-(--filter-red-400) group-focus-visible:filter-(--filter-red-400);
+    @apply transition-[filter] duration-300 hover:filter-(--filter-accent) group-focus-visible:filter-(--filter-accent);
   }
 
   .btn {
@@ -158,19 +157,19 @@
   }
 
   .btn-primary {
-    @apply bg-blue-600 text-white hocus:bg-white hocus:text-blue-600 hocus:outline-2 hocus:outline-blue-600;
+    @apply bg-brand text-white hocus:bg-white hocus:text-brand hocus:outline-2 hocus:outline-brand;
   }
 
   .btn-secondary {
-    @apply bg-gray-50 text-blue-950/75 hocus:bg-white hocus:text-gray-600 hocus:outline-2 hocus:outline-gray-600;
+    @apply bg-surface text-ink/70 hocus:bg-white hocus:text-muted hocus:outline-2 hocus:outline-muted;
   }
 
   .btn-contact {
-    @apply bg-red-400 justify-center text-white hocus:bg-white hocus:text-red-400 hocus:outline-2 hocus:outline-red-400;
+    @apply bg-accent justify-center text-white hocus:bg-white hocus:text-accent hocus:outline-2 hocus:outline-accent;
   }
 
   .tablist-btn {
-    @apply cursor-pointer border-b-4 border-transparent py-4 font-normal text-sm leading-[165%] tracking-normal transition-colors duration-300 text-blue-950/75 md:w-full md:pt-0 md:pb-6 md:text-base md:leading-[110%] md:tracking-[0.5px] hover:text-red-400 aria-selected:text-blue-950;
+    @apply cursor-pointer border-b-4 border-transparent py-4 font-normal text-sm leading-[165%] tracking-normal transition-colors duration-300 text-ink/70 md:w-full md:pt-0 md:pb-6 md:text-base md:leading-[110%] md:tracking-[0.5px] hover:text-accent aria-selected:text-ink;
   }
 
   .tabpanels {
@@ -193,7 +192,7 @@
   }
 
   .tabpanels-blue {
-    @apply pointer-events-none absolute -left-[100vw] -z-10 rounded-full bg-blue-600;
+    @apply pointer-events-none absolute -left-[100vw] -z-10 rounded-full bg-brand;
     right: var(--blue-right);
     height: var(--blue-h);
     top: calc(var(--stage-h) + var(--blue-overhang) - var(--blue-h));
@@ -213,11 +212,11 @@
   }
 
   .tabpanel-heading {
-    @apply px-10 text-center font-medium text-3xl leading-[135%] tracking-normal text-blue-950 md:text-32px md:leading-[125%] md:tracking-[-0.1px] xl:px-0 xl:text-start;
+    @apply px-10 text-center font-medium text-3xl leading-[135%] tracking-normal text-ink md:text-32px md:leading-[125%] md:tracking-[-0.1px] xl:px-0 xl:text-start;
   }
 
   .tabpanel-text {
-    @apply text-center font-normal text-sm leading-[165%] tracking-normal text-blue-950/70 md:text-lg md:leading-[155%] xl:text-start;
+    @apply text-center font-normal text-sm leading-[165%] tracking-normal text-ink/70 md:text-lg md:leading-[155%] xl:text-start;
   }
 
   .tabpanel-leaving {
@@ -229,19 +228,19 @@
   }
 
   .card-heading {
-    @apply font-medium text-2xl leading-[200%] tracking-normal text-blue-950 md:text-xl md:leading-[120%] md:tracking-[0.25px];
+    @apply font-medium text-2xl leading-[200%] tracking-normal text-ink md:text-xl md:leading-[120%] md:tracking-[0.25px];
   }
 
   .card-text {
-    @apply font-normal text-sm leading-[165%] tracking-normal text-blue-950/70 md:leading-[200%] md:tracking-[0.25px];
+    @apply font-normal text-sm leading-[165%] tracking-normal text-ink/70 md:leading-[200%] md:tracking-[0.25px];
   }
 
   .card-button {
-    @apply px-8 py-2 inline-flex items-center rounded-md bg-blue-600 shadow-buttons text-white font-medium text-sm leading-[200%] tracking-normal transition-colors duration-300 hocus:bg-white hocus:text-blue-600 hocus:outline-2 hocus:outline-blue-600 md:px-2 md:py-1 md:rounded-sm md:text-xs md:tracking-[0.25px] xl:px-8 xl:py-2 xl:rounded-md xl:text-sm;
+    @apply px-8 py-2 inline-flex items-center rounded-md bg-brand shadow-buttons text-white font-medium text-sm leading-[200%] tracking-normal transition-colors duration-300 hocus:bg-white hocus:text-brand hocus:outline-2 hocus:outline-brand md:px-2 md:py-1 md:rounded-sm md:text-xs md:tracking-[0.25px] xl:px-8 xl:py-2 xl:rounded-md xl:text-sm;
   }
 
   .faq-container {
-    @apply py-4 first:pt-0 md:border-t md:border-blue-950/15 md:first:pt-4;
+    @apply py-4 first:pt-0 md:border-t md:border-ink/15 md:first:pt-4;
   }
 
   .faq-btn {
@@ -249,11 +248,11 @@
   }
 
   .faq-question {
-    @apply font-normal text-base leading-[165%] tracking-normal md:text-lg md:leading-[155%] group-hocus:text-red-400;
+    @apply font-normal text-base leading-[165%] tracking-normal md:text-lg md:leading-[155%] group-hocus:text-accent;
   }
 
   .faq-arrow {
-    @apply text-blue-600 transition-[transform,color] duration-300 group-aria-expanded:rotate-180 group-aria-expanded:text-red-400 md:mr-4;
+    @apply text-brand transition-[transform,color] duration-300 group-aria-expanded:rotate-180 group-aria-expanded:text-accent md:mr-4;
 
     @media (prefers-reduced-motion: reduce) {
       transition: none;
@@ -280,6 +279,6 @@
   }
 
   .faq-content-text {
-    @apply pt-4 font-light text-base leading-[225%] tracking-[0.5px] text-blue-950/75;
+    @apply pt-4 font-light text-base leading-[225%] tracking-[0.5px] text-ink/70;
   }
 }
