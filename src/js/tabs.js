@@ -37,7 +37,8 @@ const LEAVING_CLASS = "tabpanel-leaving";
 /** Matches when the user asked the OS to reduce motion. @type {MediaQueryList} */
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-/** Matches from Tailwind's `md` breakpoint (48rem), where the tabs sit side by side. @type {MediaQueryList} */
+/** Matches from Tailwind's `md` breakpoint (48rem), where the tabs sit side by side.
+ * Keep in sync with the `md` value in the Tailwind theme. @type {MediaQueryList} */
 const tabletQuery = window.matchMedia("(min-width: 48rem)");
 
 /** Index of the currently selected tab. @type {number} */
