@@ -34,7 +34,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Github](https://github.com/VirginiaPat/bookmark-landing-page.gitm)
+- Solution URL: [Github](https://github.com/VirginiaPat/bookmark-landing-page.git)
 - Live Site URL: [Netlify](https://bookmark-virgi.netlify.app/)
 
 ## My process
