@@ -728,35 +728,42 @@
             novalidate
             class="flex flex-col gap-4 md:flex-row md:items-start"
           >
-            <div
-              class="rounded-md md:flex-1 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-white"
-            >
-              <label for="cta-email" class="sr-only">Email address</label>
-              <div class="relative">
-                <input
-                  id="cta-email"
-                  name="email"
-                  type="email"
-                  required
-                  autocomplete="email"
-                  pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
-                  placeholder="Enter your email address"
-                  aria-invalid="false"
-                  aria-describedby="cta-email-error"
-                  class="peer h-12 w-full rounded-md border-2 border-transparent bg-white pl-4 pr-12 font-normal text-base leading-[165%] tracking-normal text-ink placeholder:text-ink/70 outline-hidden aria-invalid:rounded-b-none aria-invalid:border-accent md:pl-6"
-                />
-                <img
-                  src="./images/icon-error.svg"
-                  alt=""
-                  width="20"
-                  height="20"
-                  class="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 peer-aria-invalid:block"
-                />
+            <div class="md:flex-1">
+              <div
+                class="rounded-md has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-white"
+              >
+                <label for="cta-email" class="sr-only">Email address</label>
+                <div class="relative">
+                  <input
+                    id="cta-email"
+                    name="email"
+                    type="email"
+                    required
+                    autocomplete="email"
+                    pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+                    placeholder="Enter your email address"
+                    aria-invalid="false"
+                    aria-describedby="cta-email-error"
+                    class="peer h-12 w-full rounded-md border-2 border-transparent bg-white pl-4 pr-12 font-normal text-base leading-[165%] tracking-normal text-ink placeholder:text-ink/70 outline-hidden aria-invalid:rounded-b-none aria-invalid:border-accent md:pl-6"
+                  />
+                  <img
+                    src="./images/icon-error.svg"
+                    alt=""
+                    width="20"
+                    height="20"
+                    class="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 peer-aria-invalid:block"
+                  />
+                </div>
+                <p
+                  role="alert"
+                  id="cta-email-error"
+                  class="rounded-b-md bg-accent font-medium italic text-10px leading-[120%] tracking-[0.25px] text-white not-empty:pt-1 not-empty:pb-1.5 not-empty:pl-3"
+                ></p>
               </div>
               <p
-                role="alert"
-                id="cta-email-error"
-                class="rounded-b-md bg-accent font-medium italic text-10px leading-[120%] tracking-[0.25px] text-white not-empty:pt-1 not-empty:pb-1.5 not-empty:pl-3"
+                id="cta-status"
+                role="status"
+                class="text-sm text-white not-empty:pt-3"
               ></p>
             </div>
             <button type="submit" class="btn btn-contact">Contact Us</button>
